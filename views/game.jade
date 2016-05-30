@@ -1,0 +1,122 @@
+extends layout
+block content
+  body(onload='footer_info();')
+    .page-wrap
+      header.header
+        .header_inner
+          .navigation
+            ul.navigation_inner
+              li
+                a(href='/') Home
+              li(style='pointer-events: none;')
+                a.active(href='game.html') Play Game
+              li
+                a(href='references.html') References used
+              li
+                a(href='howto.html') How To Play
+              li
+                a(href='about.html') About
+              li
+                a(href='register') Register
+              li#testlog
+                a(href='login') Login
+              li
+                a(href='comments') Feedbacks
+              if(user)
+                li
+                  a(href='/logout') Log Out
+              li 
+                a(href='score_upd') Leaderboard
+      .main-content
+        .names
+          p#move_names
+          form(name='game_form')
+            | Player 1 Name:
+            if(user)  
+              input#p1name(type='text', value=user.username, name='username' readonly)
+            br
+            | 					Player 2 Name:  
+            input#p2name(type='text')
+            br
+            | 					Play versus: 
+            select#opponent
+              option(value='1') Computer
+              option(value='0') Friend
+            br
+            if(user)
+              input.button.button1(type='button', value='START GAME', onclick='start();')
+            else
+              input.button.button1(type='button', value='NOT LOGGED', style='pointer-events: none;')
+          .score_table
+            table.scores
+              tr
+                td
+                  p#table_p1_name
+                td
+                  p#table_p2_name
+              tr
+                td
+                  p#table_p1_score
+                td
+                  p#table_p2_score
+        .game_board
+          table#myTable
+            // 1st ROW
+            tr
+              td
+              td
+              td
+              td
+              td
+              td
+              td
+            // 2nd ROW
+            tr
+              td
+              td
+              td
+              td
+              td
+              td
+              td
+            // 3rd ROW
+            tr
+              td
+              td
+              td
+              td
+              td
+              td
+              td
+            // 4th ROW
+            tr
+              td
+              td
+              td
+              td
+              td
+              td
+              td
+            // 5th ROW
+            tr
+              td
+              td
+              td
+              td
+              td
+              td
+              td
+            tr
+              td
+              td
+              td
+              td
+              td
+              td
+              td
+        #chipcontainer.chips
+    footer#fixed
+      .footer_title
+        h4  University of Western Australia
+        h4#last_modified
+        h4 Last visited: dd/mm/yyyy

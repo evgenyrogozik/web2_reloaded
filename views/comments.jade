@@ -1,0 +1,64 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/mystyle.css')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css')
+      
+    script(src="/socket.io/socket.io.js")
+    script(src="http://code.jquery.com/jquery-1.11.1.js")
+    script(type='text/javascript', src='/javascripts/myScript.js')
+  body(onload='footer_info();')
+    .page-wrap
+      header.header
+        .header_inner
+          .navigation
+            ul.navigation_inner
+              li
+                a(href='/') Home
+              li
+                a(href='game') Play Game
+              li
+                a(href='references.html') References used
+              li
+                a(href='howto.html') How To Play
+              li
+                a(href='about.html') About
+              li 
+                a(href='register') Register
+              li 
+                a(href='login') Login
+              li(style='pointer-events: none;')
+                a.active(href='comments') Feedbacks
+              if(user)
+                li
+                  a(href='/logout') Log Out
+              li 
+                a(href='score_upd') Leaderboard
+      .main-content
+        .clearfix
+          if(user)
+            h4='You are logged in as: ' + user.username
+          else
+            h4='You are not logged in and cannot post comment'
+          form(name="addcomment",method="post",action="/addcomment")
+            if(user)
+              input.form-control(required='', type='text', value=user.username, name='username' readonly)
+            else
+              input.form-control(required='', type='text', value='', name='username' readonly)
+            textarea.form-control(required='', maxlength='200', rows='3', placeholder='Say something' name='message')
+            input.btn.submit-btn.pull-right(type='submit', value='submit')
+          #post-stream
+            h4 Comments
+            each s in comms
+              .post
+                p #{s.message}
+                small Posted by #{s.user_name}
+                small.pull-right #{s.date_created}
+    footer#fixed
+      .footer_title
+        h4  University of Western Australia
+        h4#last_modified
+        h4 Last visited: dd/mm/yyyy
+

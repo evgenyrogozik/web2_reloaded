@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>MyGame</title>
+	<link rel="stylesheet" type="text/css" href="../stylesheets/mystyle.css">
+	<!--JAVASCRIPT -->
+	<script  src="http://code.jquery.com/jquery-1.9.1.min.js" ></script>     
+	<script type="text/javascript" src="../javascripts/myScript.js"></script>
+</head>
+<body onload="footer_info();">
+	<div class="page-wrap" id="mypagewrap">
+		<header id="myheader" class="header">
+			<div class="header_inner">
+				<div class="navigation">
+					<ul class="navigation_inner">
+						<li><a href="/">Home</a></li>
+						<li><a href="game">Play Game</a></li>
+						<li><a href="references.html">References used</a></li>
+						<li><a href="howto.html">How To Play</a></li>
+						<li style='pointer-events: none;' class=""><a href="about.html" class="active">About</a></li>
+						<li><a href="register">Register</a></li>
+						<li id="testlog"><a href="login">Login</a></li>
+						<li><a href="comments">Feedbacks</a></li>
+					</ul>
+				</div>
+			</div>
+		</header>
+		<div class="content">
+			<h2>UWA 2016</h2>
+			<p>CITS3403 Project 1</p>
+			<p>Author: Evgeny Rogozik</p>
+			<p>Student number: 21177069</p>
+			<p>This implemented version of Connect Four game can be played both versus a friend or a computer. However it is fair to mention that in the current version of the game computer just makes random moves without considering any possible win movements. Research has been done on which AI algorithm is used for this particular game. Minimax Algorithm can be implemented for this game's AI but that would rather be a project for CITS3001 unit.</p>
+		</div>
+	</div>
+	<footer id="fixed">
+		<div class="footer_title">
+			<h4> University of Western Australia</h4>
+			<h4 id="last_modified"></h4>
+			<h4>Last visited: dd/mm/yyyy</h4>
+		</div>
+</footer>
+
+</body>
+</html>

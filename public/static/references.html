@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>MyGame</title>
+	<link rel="stylesheet" type="text/css" href="../stylesheets/mystyle.css">
+	<!--JAVASCRIPT -->
+	<script  src="http://code.jquery.com/jquery-1.9.1.min.js" ></script>     
+	<script type="text/javascript" src="../javascripts/myScript.js"></script>
+</head>
+<body onload="footer_info();">
+	<div class="page-wrap">
+		<header class="header">
+			<div class="header_inner">
+				<div class="navigation">
+					<ul class="navigation_inner">
+						<li><a href="/">Home</a></li>
+						<li><a href="game">Play Game</a></li>
+						<li style='pointer-events: none;'><a href="references.html" class="active">References used</a></li>
+						<li><a href="howto.html">How To Play</a></li>
+						<li class=""><a href="about.html">About</a></li>
+						<li><a href="register">Register</a></li>
+						<li id="testlog"><a href="login">Login</a></li>
+						<li><a href="comments">Feedbacks</a></li>
+					</ul>
+				</div>
+			</div>
+		</header>
+
+		<div class="content" id="wider_table">
+			<h1>References used:</h1>
+
+			<table>
+				<tr>
+					<th style="width: 150px;">Reference link</th>
+					<th>Description</th>
+				</tr>
+				<tr>
+					<td style="width: 150px;"><a href="http://www.w3schools.com">www.w3schools.com</a></td>
+					<td>The main source of information.</td>
+				</tr>
+				<tr>
+					<td style="width: 150px;"><a href="http://stackoverflow.com">www.stackoverflow.com</a></td>
+					<td>Great place to ask and discuss different questions related to the web development.</td>
+				</tr>
+				<tr>
+					<td style="width: 150px;"><a href="http://howdoyouplayit.com/connect-4-board-game-rules-play">www.howdoyouplayit.com</a></td>
+					<td>Rules for the "How To Play" page were taken from this web site.</td>
+				</tr>
+				<tr>
+					<td style="width: 150px;"><a href="https://www.activememory.com/news/2014/brain-fun-facts">www.achievememory.com</a></td>
+					<td>10 Facts about Brain were taken from this web site.</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<footer id="fixed">
+		<div class="footer_title">
+			<h4> University of Western Australia</h4>
+			<h4 id="last_modified"></h4>
+			<h4>Last visited: dd/mm/yyyy</h4>
+		</div>
+	</footer>
+</body>
+</html>

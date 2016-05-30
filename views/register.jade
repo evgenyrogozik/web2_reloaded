@@ -1,0 +1,85 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/mystyle.css')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css')
+      
+    script(src="/socket.io/socket.io.js")
+    script(src="http://code.jquery.com/jquery-1.11.1.js")
+    script(type='text/javascript', src='/javascripts/myScript.js')
+    script.
+        console.log('loading script');
+        var socket = io();
+        console.log('connected');
+
+        function send(){
+          console.log('send');
+          var message = document.getElementById('message');
+          socket.emit('message', message.value);
+          message.value = '';
+        };
+
+        socket.on('message', function(msg){
+          var messages = document.getElementById('messages');
+          var newText = document.createElement('li');
+          newText.innerHTML = msg;
+          messages.appendChild(newText);
+        });
+    body(onload='footer_info();')
+    .page-wrap
+      header.header
+        .header_inner
+          .navigation
+            ul.navigation_inner
+              li
+                a(href='/') Home
+              li
+                a(href='game') Play Game
+              li
+                a(href='references.html') References used
+              li
+                a(href='howto.html') How To Play
+              li
+                a(href='about.html') About
+              li(style='pointer-events: none;')
+                a.active(href='register') Register
+              li#testlog
+                a(href='login') Login
+              li
+                a(href='comments') Feedbacks
+              if(user)
+                li
+                  a(href='/logout') Log Out
+              li 
+                a(href='score_upd') Leaderboard
+      .main-content
+        .content
+          h1 Registration Form
+          form(action="/register",method="post")
+            label(for='username') Enter Username:
+            br
+            input(id='username', type = 'text', name = 'username')
+            br
+            label(for='password') Enter Password
+            br
+            input(id='password',type ='password', name='password')
+            br
+            label(for='given_name') Enter Given Name:
+            br
+            input(id='given_name', type = 'text', name = 'given_name')
+            br
+            label(for='surname') Enter Surname
+            br
+            input(id='surname',type ='text', name='surname')
+            br
+            label(for='dob') Enter Date of Birth:
+            br
+            input(id='dob', type = 'date', name = 'dob')
+            br
+            label(for='email') Enter Email
+            br
+            input(id='email',type ='email', name='email')
+            br
+            input(type='submit', value='Register')

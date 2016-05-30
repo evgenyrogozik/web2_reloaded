@@ -1,0 +1,74 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/mystyle.css')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css')
+      
+    script(src="/socket.io/socket.io.js")
+    script(src="http://code.jquery.com/jquery-1.11.1.js")
+    script(type='text/javascript', src='/javascripts/myScript.js')
+    script.
+        console.log('loading script');
+        var socket = io();
+        console.log('connected');
+
+        function send(){
+          console.log('send');
+          var message = document.getElementById('message');
+          socket.emit('message', message.value);
+          message.value = '';
+        };
+
+        socket.on('message', function(msg){
+          var messages = document.getElementById('messages');
+          var newText = document.createElement('li');
+          newText.innerHTML = msg;
+          messages.appendChild(newText);
+        });
+    body(onload='footer_info();')
+    .page-wrap
+      header.header
+        .header_inner
+          .navigation
+            ul.navigation_inner
+              li
+                a(href='/') Home
+              li
+                a(href='game') Play Game
+              li
+                a(href='references.html') References used
+              li
+                a(href='howto.html') How To Play
+              li
+                a(href='about.html') About
+              li
+                a(href='register') Register
+              li#testlog(style='pointer-events: none;')
+                a.active(href='login') Login
+              li
+                a(href='comments') Feedbacks
+              if(user)
+                li
+                  a(href='/logout') Log Out
+              li 
+                a(href='score_upd') Leaderboard
+      .main-content
+        .content
+          if(user)
+            h1 You are logged in as #{user.username}
+            h1
+              a(href='/logout') Logout
+          else
+            h1 Login Page
+            br
+            form(action="/login",method="post")
+              label(for='username') Enter username:
+              br
+              input(id='username', type = 'text', name = 'username')
+              br
+              label(for='password') Enter password:
+              br
+              input(id='password', type = 'password', name = 'password')
+              br
+              input(type='submit', value='Submit')

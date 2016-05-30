@@ -1,0 +1,73 @@
+extends layout
+
+block content
+  body(onload='footer_info();')
+    .page-wrap
+      header.header
+        .header_inner
+          .navigation
+            ul.navigation_inner
+              li(style='pointer-events: none;')
+                a.active(href='/') Home
+              li
+                a(href='game') Play Game
+              li
+                a(href='references.html') References used
+              li
+                a(href='howto.html') How To Play
+              li
+                a(href='about.html') About
+              li
+                a(href='register') Register
+              li#testlog
+                a(href='login') Login
+              li
+                a(href='comments') Feedbacks
+              if(user)
+                li
+                  a(href='/logout') Log Out
+              li 
+                a(href='score_upd') Leaderboard
+      .main-content
+        .about_theme_left
+          h1 10 fun Facts about the Brain
+          img.brain_image(src='/images/brain.jpg', alt='Brain_img')
+          p
+            strong 1. 
+            |  The junction between two neurons (the synapse) is just a miniscule gap, about 20 nanometers (billionths of a meter) wide. There are trillions of synapses in your brain!
+          p
+            strong 2. 
+            |  Sleep and depression are intimately linked. People with depression can sleep too little or too much, and both symptoms are characteristic of the disease.
+          p
+            strong 3. 
+            |  Addictive substances like nicotine, alcohol, prescription pain killers, marijuana, cocaine and heroin act on the brain’s reward circuits. They release a rush of neurochemicals giving a euphoric high. With continued use of additive substances the underlying brain circuits physically change, which is major component of the addiction itself.
+          p
+            strong 4. 
+            |  Mild to moderate alcohol consumption—from a couple of drinks a week up to about two a day—is associated with longer life, and in some cases better cognitive (thinking)  functioning. However, it is not at all clear if this is due to a true biological effect of alcohol or because the people who drank alcohol tend to also be doing something else good for their brain health.
+          p
+            strong 5. 
+            |  The idea that we use only 10 percent of our brain at any given time is a myth. It seems  to have arisen out of early neuroscience findings that identified ‘silent’ areas in the cortex that were not responsive to sensory stimulation. We now know these areas, far from silent, are involved in higher-order cognitive processes.
+          p
+            strong 6. 
+            |  Speaking more than one language may delay the onset of age-related dementia, including Alzheimer’s disease, by up to four years.
+          p
+            strong 7. 
+            |  Listening to classical music has not been shown to improve intelligence in children. But learning to play a musical instrument has been shown to enhance thinking skills (and exam results) in the long term.
+          p
+            strong 8. 
+            |  Boys are nearly four times as likely as girls to be diagnosed with autism and attention deficit hyperactivity disorder (ADHD) early in life. In contrast, depression and anxiety, which are more commonly diagnosed after puberty, occur almost twice as frequently in women as men.
+          p
+            strong 9. 
+            |  Are you a spring, summer, autumn or winter baby? New research shows that spring and summer-born people have a tendency to be excessively positive. And those born in the winter are significantly less prone to irritability than those born at other times of the year.
+          p
+            strong 10. 
+            |  A recent systematic review of the literature found that cognitive training programs can improve cognitive functions such as executive functions, working memory, episodic memory, processing speed, and IQ.
+        .about_theme_right
+          p
+            | The Theme of this project is to inspire younger generations develop their brain capabilities by playing more logical games with their friends and also against Artificial Intelligence with different difficulty levels.
+    footer
+      .footer_title
+        h4  University of Western Australia
+        h4#last_modified
+        h4 Last visited: dd/mm/yyyy
+
