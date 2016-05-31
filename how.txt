@@ -1,0 +1,13 @@
+How to put this web app into the cloud :
+
+- First, change the port in bin/www into 80, instead of 3000
+- We used FTP client (filezilla) to move the files
+- connect the bitnami account in filezilla
+- in remote machine, go to ~/opt/bitnami/apache2/htdocs/
+- put the folder containing the website there (for example : X is the name of the folder)
+- then, open cygwin
+- run this command : ssh [username]@[host]
+- put the password
+- after connected, go to ~/opt/bitnami/apache2/htdocs/X
+- we stop the apache running by do this command : sudo apachectl -k stop
+- Then, we can run the server bu do this command : sudo npm start
