@@ -57,8 +57,12 @@ html
         .content
           if(user)
             h1 You are logged in as #{user.username}
+            br
             h1
               a(href='/logout') Logout
+            br
+            h1
+              a(href='/delete') Delete Account
           else
             h1 Login Page
             br

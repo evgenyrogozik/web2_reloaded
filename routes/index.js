@@ -4,6 +4,7 @@ var mongoose = require('mongoose');
 //new
 var passport = require('passport');
 var Account = require('../models/account');
+var User = mongoose.model('Account');
 var Score = mongoose.model('standing');
 //old
 var router = express.Router();
@@ -36,7 +37,7 @@ router.get('/register', function(req, res) {
 router.get('/score_upd', function(req, res) {
     Score
         .find()
-            .sort({win_rate: -1})
+            .sort({win_rate: -1, total_wins: -1})
             .exec(
                 function(err, scores){
                     if(err){
@@ -53,7 +54,40 @@ router.get('/score_upd', function(req, res) {
                 });
         });
 
+router.get('/delete', function(req,res){
+  var user = req.user;
+  User.remove({username:user.username}, function(err){
+    if(err){
+      console.log(err);
+      res.status(500);
+      res.render('error', {
+        message:err.message,
+        error: err
+      });
+    }
+    else{
+      console.log(user.username, ' removed');
+      req.logout();
+      res.redirect('/login');
+    }
+  });
+}     );
+
 router.post('/register', function(req, res) {
+  User.findOne({username: req.body.username})
+  .exec(
+    function(err, userData) {
+      if(err) {
+        res.render('error', {
+          message:err.messagr,
+          error: err
+        });
+      }
+    else {
+      if(userData != null) {
+        console.log('Username already taken');
+      }
+  else {
   Account.
   register(new Account({first_name: req.body.given_name, surname: req.body.surname, dob: req.body.dob, email: req.body.email, username : req.body.username }), 
     req.body.password, 
@@ -62,9 +96,12 @@ router.post('/register', function(req, res) {
        return res.render('register', { account : account });
      }
      passport.authenticate('local')(req, res, function () {
-       res.redirect('/');
+       res.redirect('/login');
      });
    });
+  }
+}
+});
 });
 
 router.get('/win', function(req, res) {

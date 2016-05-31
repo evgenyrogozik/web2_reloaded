@@ -16,8 +16,6 @@ module.exports.connect = function(socket){
           console.log('last 10 messages');
           for(var i = messages.length-1; i>=0; i--){
             socket.emit('message', messages[i].message);
-            socket.emit('user', messages[i].user);
-            socket.emit('time', messages[i].time);
           }
         }
       });
